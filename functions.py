@@ -24,6 +24,10 @@ class Functions(object):
                                 self.compass.compose[self.form.form_x[-1]][self.form.form_y[-1]] = self.form.sheet[j][i]
                                 self.form.flag = False
                                 return
+                    else:
+                        self.compass.compose[self.form.form_x[-1]][self.form.form_y[-1]] = ""
+                        self.form.flag = False
+                        return
                 for i in range(len(self.place.place_x)):
                     for j in range(len(self.place.place_y)):
                         if (self.place.place_x[i] < pos[0] < self.place.place_x[i] + self.settings.block_size and
