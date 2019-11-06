@@ -17,8 +17,8 @@ class Functions(object):
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 pos = pygame.mouse.get_pos()
                 if self.form.flag:
-                    for i in range(len(self.form.form_x)):
-                        for j in range(len(self.form.form_y)):
+                    for i in range(len(self.form.form_x) - 1):
+                        for j in range(len(self.form.form_y) - 1):
                             if (self.form.form_x[i] < pos[0] < self.form.form_x[i] + self.settings.block_size and
                                     self.form.form_y[j] < pos[1] < self.form.form_y[j] + self.settings.block_size):
                                 self.compass.compose[self.form.form_x[-1]][self.form.form_y[-1]] = self.form.sheet[j][i]
@@ -39,6 +39,15 @@ class Functions(object):
                             self.form.form_y.append(i)
                             self.form.flag = True
                             return
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_s:
+                    if not self.compass.lawful():
+                        print("wrongful")
+                        return
+                    self.compass.recall()
+                    self.compass.compose = self.compass.take.copy()
+                if event.key == pygame.K_c:
+                    self.compass.clear()
 
     def draw_screen(self):
         self.screen.fill((0, 0, 0))
