@@ -44,8 +44,13 @@ class Functions(object):
                     if not self.compass.lawful():
                         print("wrongful")
                         return
+                    self.compass.flag = False
                     self.compass.recall()
-                    self.compass.compose = self.compass.take.copy()
+                    if self.compass.flag:
+                        self.compass.compose = self.compass.take.copy()
+                    else:
+                        print("wrongful")
+                        return
                 if event.key == pygame.K_c:
                     self.compass.clear()
 
