@@ -19,6 +19,7 @@ class Compass(object):
                         ["", "", 4, "", "", "", "", 3, ""],
                         ["", "", "", "", "", 9, 7, "", ""]]
         self.take = list()
+        self.flag = False
 
     def clear(self):
         self.compose = [[""] * 9 for _ in range(9)]
@@ -36,6 +37,7 @@ class Compass(object):
             col = 0
             if row == 9:
                 self.take.clear()
+                self.flag = True
                 for i in range(9):
                     self.take.append(list())
                     for j in range(9):
