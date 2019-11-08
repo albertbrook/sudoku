@@ -136,3 +136,7 @@ return
 得到第一个解后还没有结束，将继续回溯求解，一层层往上直到所有都循环完了后置0(前面提到的关键点)才结束<br>
 所以compose还是原来的compose，因此要用take记录最后一个解<br>
 求解结束后在把take赋值给compose就好了
+```
+self.compass.compose = self.compass.take.copy()
+```
+最后在赋值的时候，可以直接使用copy，因为只需要第一层的内存地址不一样，清空take时只是清空了take的内存地址指向，第二层数组不受影响（可变数据类型特性）
